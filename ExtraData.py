@@ -94,9 +94,10 @@ class Printer:
     self.out = out
     if isinstance(self.out, str):
       if os.path.exists(self.out):
-        t = time.localtime()
-        ext = "-%s-%s-%s_%sh%s" % (t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour, t.tm_min)
+        t = time.localtime(os.path.getmtime(self.out))
+        ext = "-%s-%s-%s_%sh%s.bak" % (t.tm_year, t.tm_mon, t.tm_mday, t.tm_hour, t.tm_min)
         os.rename(self.out, self.out+ext)
+        os.utime(self.out+ext, None)
       self.out = file(self.out, "w")
     self.lenght = 0
 
