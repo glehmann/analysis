@@ -110,7 +110,7 @@ class Printer:
   def printData(self, *extendedData):
     data = [self.extra.config.get("experiment", k) for k in self.extra.attrs]+[str(d) for d in extendedData]
     if len(data) != self.length:
-      raise Exception("Data and header length mismatch - got %i, expeted %i." % (len(data), self.length))
+      raise Exception("Data and header length mismatch - got %i, expected %i." % (len(data), self.length))
     print >> self.out, ' '.join(data)
     self.out.flush()
   
