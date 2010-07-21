@@ -12,7 +12,7 @@ def computeRegion(lo, img):
    transform = lo.GetBinaryPrincipalAxesToPhysicalAxesTransform()
    invTransform = itk.AffineTransform.D3.New()
    transform.GetInverse( invTransform )
-   region = itk.region(img)
+   region = lo.GetRegion()
    outputSpacing = [min(itk.spacing(img))]*3
    dummyImg = itk.Image.UC3.New()
    dummyImg.SetSpacing( outputSpacing )
